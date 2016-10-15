@@ -1,0 +1,84 @@
+FORMAT: 1A
+
+# Messageboard
+
+Messageboard lets you create, retrieve, modify and delete simple text messages.
+Its not much but hey, it's something.
+
+## All messages endpoint [/api/messages/]
+
+This enpoint lets you view all messages at once and create new messages.
+
+### List all messages [GET]
+
+Returns a list of all messages ordered by creation date descendingly.
+
++ Response 200 (application/json)
+
+        [
+            {
+                "url": "hostname/api/messages/1/",
+                "created": "1994-11-05T08:15:30-05:00",
+                "body": "Tis but a scratch!"
+            }
+        ]
+
+### Create new message [POST]
+
+Lets you create a new message. You can only provide the body, everything
+else is set automatically.
+
++ Request (application/json)
+
+        {
+            "body": "Tis but a scratch!"
+        }
+
++ Response 201 (application/json)
+
+        {
+            "url": "hostname/api/messages/1/",
+            "created": "1994-11-05T08:15:30-05:00",
+            "body": "Tis but a scratch!"
+        }
+
+            
+## Specific message endpoint [/api/messages/{id}/]
+
+This endpoint lets you handle specific existing message - Retrieve it,
+modify it or even delete it.
+
+### Retrieve single message [GET]
+
++ Response 200 (application/json)
+
+        {
+            "url": "hostname/api/messages/1/",
+            "created": "1994-11-05T08:15:30-05:00",
+            "body": "Tis but a scratch!"
+        }
+            
+
+### Modify existing message [PATCH]
+
+You can modify body of an existing message
+
++ Request (application/json)
+
+        {
+            "body": "Look, you stupid bastard, you've got no arms left!"
+        }
+
++ Response 200 (application/json)
+
+        {
+            "url": "hostname/api/messages/1/",
+            "created": "1994-11-05T08:15:30-05:00",
+            "body": "Look, you stupid bastard, you've got no arms left!"
+        }
+        
+### Delete existing message [DELETE]
+
+You can delete any existing message.
+
++ Response 204
