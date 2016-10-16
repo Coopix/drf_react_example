@@ -1,3 +1,6 @@
 # Python bytecode
 *.pyc
 node_modules
+
+#Database file
+db.sqlite3
